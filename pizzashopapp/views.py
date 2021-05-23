@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from pizzashopapp.forms import UserForm, PizzaShopForm
+from pizzashopapp.forms import UserForm, PizzaShopForm, UserFormForEdit
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -12,11 +12,16 @@ def home(request):
 
 @login_required(login_url='/pizzashop/sign-in/')
 def pizzashop_home(request):
-    return render(request, 'pizzashop/home.html', {})
+    return redirect(pizzashop_pizza)
 
 @login_required(login_url='/pizzashop/sign-in/')
 def pizzashop_account(request):
-    return render(request, 'pizzashop/account.html', {})
+    user_form = UserFormForEdit(instance=request.user)
+    pizzashop_form = PizzaShopForm(instance=request.user.pizzashop)
+    return render(request, 'pizzashop/account.html', {
+        'user_form': user_form,
+        'pizzashop_form': pizzashop_form
+    })
 
 @login_required(login_url='/pizzashop/sign-in/')
 def pizzashop_pizza(request):

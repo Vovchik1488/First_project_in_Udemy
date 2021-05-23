@@ -8,6 +8,10 @@ body {
     background-color: #7B2324;
 }
 
+.text-white {
+    color: white;
+}
+
 .btn-red {
     color: white;
     background-color: #E21E35
@@ -64,7 +68,7 @@ body {
 .sidebar .list-group .list-group-item,
 .sidebar .list-group .list-group-item:focus {
     background-color: #7B2324;
-    color: #ffffff;
+    color: white;
     border: 0;
     padding-left: 60px;
     padding-right: 30px;
@@ -74,7 +78,7 @@ body {
 .sidebar .list-group .list-group-item:active,
 .sidebar .list-group .list-group-item:hover {
     background-color: #3F1E1E;
-    color: #e0de;
+    color: #e0deeb;
 }
 
 
@@ -101,4 +105,12 @@ body {
 /* SIDE BAR - CONTENT */
 .content {
     padding: 0 40px;
+}
+
+.content .card {
+    border: none;
+}
+
+.container-fluid {
+    padding-left: 100px;
 }
