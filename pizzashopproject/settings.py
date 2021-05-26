@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r$9^a4e^kwtlz!iov!64k@5b_)c^y^u+__0y5!q$c)m@z3gin*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['whispering-everglades-25512.herokuapp.com', 'localhost', '127.0.0.1' ]
 
 
 # Application definition
@@ -132,6 +132,12 @@ LOGIN_REDIRECT_URL = '/'
 
 MEDIA_ROOT = (BASE_DIR / 'media')
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = (BASE_DIR, 'staticfiles')
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
