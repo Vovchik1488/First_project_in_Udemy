@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from pizzashopapp import views
+from django.urls import path, include
+from pizzashopapp import views, apis
 
 from django.contrib.auth.views import LoginView, LogoutView
 
@@ -38,5 +38,17 @@ urlpatterns = [
 
     path('pizzashop/account/', views.pizzashop_account, name='pizzashop-account'),
     path('pizzashop/pizza/', views.pizzashop_pizza, name='pizzashop-pizza'),
+    path('pizzashop/pizza/add/', views.pizzashop_add_pizza, name='pizzashop-add-pizza'),
+    path('pizzashop/pizza/edit/<int:pizza_id>', views.pizzashop_edit_pizza, name='pizzashop-edit-pizza'),
+
+    #APIS
+    path('api/client/pizzashops/', apis.client_get_pizzashops),
+    path('api/client/pizzas/<int:pizzashop_id>', apis.client_get_pizzas),
+
+
+    # Sign in / Sign up / Sign Out
+    path('api/social/', include('rest_framework_social_oauth2.urls')),
+    # /convert-token (sign in / sign up)
+    # /revoke-token (sign out)
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
