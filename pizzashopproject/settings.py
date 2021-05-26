@@ -133,7 +133,7 @@ LOGIN_REDIRECT_URL = '/'
 MEDIA_ROOT = (BASE_DIR / 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = (BASE_DIR, 'staticfiles')
+STATIC_ROOT = (BASE_DIR / 'staticfiles')
 
 import dj_database_url
 db_from_env = dj_database_url.config()
@@ -152,7 +152,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '997ab3bcb57b92dfff8da1bc0a6c19b'
 # Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from facebook. Email is not sent by default, but
 SOCIAL_AUTH_FACEBOOK_SCOPE =['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'id,name,email'
+    'fields': 'id, name, email'
 }
 
 SOCIAL_AUTH_PIPELINE = (
